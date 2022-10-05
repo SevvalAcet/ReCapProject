@@ -1,11 +1,12 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.EntityFramework
 {
     //Burası entityframeworke göre kodlanır
-    public class EfBrandDal : IBrandDal
+    public class EfBrandDal : EfEntityRepositoryBase<Brand, NorthwindContext>, IBrandDal
     {
         public void Add(Brand entity)
         {

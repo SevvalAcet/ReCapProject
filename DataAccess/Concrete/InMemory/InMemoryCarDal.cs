@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System.Linq.Expressions;
 using System.Net.Http.Headers;
 
@@ -14,7 +15,7 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>();
             {
-                new Car { Id = 1, BrandId = 1, ColorId = 2, DailyPrice = 2000, Descripton = "2001 model bmw", ModelYear = 2001 };
+                new Car { Id = 1, BrandId = 1, ColorId = 2, DailyPrice = 2000, Description = "2001 model bmw", ModelYear = 2001 };
             }
         }
         public List<Car> GetAll()
@@ -46,7 +47,7 @@ namespace DataAccess.Concrete.InMemory
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.ModelYear = car.ModelYear;
             carToUpdate.DailyPrice = car.DailyPrice;
-            carToUpdate.Descripton = car.Descripton;
+            carToUpdate.Description = car.Description;
          }
 
         public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
@@ -55,6 +56,11 @@ namespace DataAccess.Concrete.InMemory
         }
 
         public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDto> GetCarDetails()
         {
             throw new NotImplementedException();
         }
