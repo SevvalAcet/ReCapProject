@@ -27,7 +27,7 @@ namespace Business.Concrete
 
         public void Delete(Car car)
         {
-            throw new NotImplementedException();
+            _carDal.Delete(car);
         }
 
         public List<Car> GetAll()
@@ -53,7 +53,7 @@ namespace Business.Concrete
 
         public void Update(Car car)
         {
-            throw new NotImplementedException();
+            _carDal.Update(car);
         }
     }
 }

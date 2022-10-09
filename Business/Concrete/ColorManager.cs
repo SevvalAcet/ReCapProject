@@ -1,23 +1,30 @@
 ﻿using Business.Abstract;
+using DataAccess.Abstract;
 using Entities.Concrete;
 
 namespace Business.Concrete
 {
     public class ColorManager : IColorService
     {
+        IColorDal _colorDal;
+        public ColorManager(IColorDal colorDal)
+        {
+            _colorDal = colorDal;
+        }
+
         public void Add(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Add(color);
         }
 
-        public Color Get(Color color)
+        public List<Color> GetAll()
         {
-            throw new NotImplementedException();
+            return _colorDal.GetAll();
         }
 
-        public void Remove(Color color)
+        public void Delete(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Delete(color);
         }
 
         public void Update(Color color)
