@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Business.Concrete
 {
@@ -11,16 +13,6 @@ namespace Business.Concrete
         public BrandManager(IBrandDal brandDal)
         {
             _brandDal = brandDal;
-            }
-
-        public void Add(Brand brand)
-        {
-            _brandDal.Add(brand);
-        }
-
-        public void Delete(Brand brand)
-        {
-            _brandDal.Delete(brand);
         }
 
         public List<Brand> GetAll()
@@ -32,10 +24,21 @@ namespace Business.Concrete
         {
             return _brandDal.Get(b => b.BrandId == brandId);
         }
-
-        public void Update(Brand brand)
+        public IResult Add(Brand brand)
         {
-            _brandDal.Update(brand);
+            _brandDal.Add(brand);
+            return new Result(true, "marka eklendi");
+        }
+
+        public IResult Delete(Brand brand)
+        {
+            _brandDal.Delete(brand);
+            return new Result(false,"marka silindi");
+        }
+
+        public IResult Update(Brand brand)
+        {
+            throw new NotImplementedException();
         }
     }
 }

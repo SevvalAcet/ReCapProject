@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 
 namespace Business.Abstract
 {
@@ -6,8 +7,8 @@ namespace Business.Abstract
     {
         List<Brand> GetAll();
         Brand GetByBrandId(int brandId);
-        void Add(Brand brand);
-        void Update(Brand brand);
-        void Delete(Brand brand);
+        IResult Add(Brand brand);
+        IResult Update(Brand brand);
+        IResult Delete(Brand brand);
     }
 }
