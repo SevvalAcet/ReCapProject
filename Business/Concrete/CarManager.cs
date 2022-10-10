@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,10 +19,10 @@ namespace Business.Concrete
         {
             if(car.Description.Length >=2 && car.DailyPrice>0)
             {
-               return new ErrorResult ("Ürün ismi min 2 karakter olmalıdır")
+                return new ErrorResult(Messages.CarNameInvalid);
             }
             _carDal.Add(car);
-           return new SuccessResult("Ürün eklendi")
+            return new SuccessResult(Messages.CarAdded);
         }
 
         public IResult Delete(Car car)

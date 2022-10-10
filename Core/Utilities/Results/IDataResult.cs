@@ -1,6 +1,7 @@
 ﻿namespace Core.Utilities.Results
 {
-    public class IDataResult
+    public interface IDataResult<T>:IResult
     {
+        T Data { get; }
     }
 }
