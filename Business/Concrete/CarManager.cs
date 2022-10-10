@@ -14,16 +14,14 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             if(car.Description.Length >=2 && car.DailyPrice>0)
             {
-                _carDal.Add(car);
+               return new ErrorResult ("Ürün ismi min 2 karakter olmalıdır")
             }
-            else
-            {
-                Console.WriteLine("Araba ismi minimum 2 karakter olmalı,günlük fiyat 0'dan büyük olmalıdır.");
-            }
+            _carDal.Add(car);
+           return new SuccessResult("Ürün eklendi")
         }
 
         public IResult Delete(Car car)

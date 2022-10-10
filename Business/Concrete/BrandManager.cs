@@ -2,6 +2,7 @@
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using System.Data;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Business.Concrete
@@ -15,9 +16,13 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-           return _brandDal.GetAll();
+            if (DataSetDateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult();
+            }
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),true,"Ürünler listelendi");
         }
 
         public Brand GetByBrandId(int brandId)
