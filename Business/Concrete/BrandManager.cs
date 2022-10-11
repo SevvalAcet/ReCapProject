@@ -1,9 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using System.Data;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Business.Concrete
 {
@@ -18,11 +17,11 @@ namespace Business.Concrete
 
         public IDataResult<List<Brand>> GetAll()
         {
-            if (DataSetDateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 22)
             {
-                return new ErrorDataResult();
+                return new ErrorDataResult<List<Brand>>(Messages.MaitenceTime);
             }
-            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),true,"Ürünler listelendi");
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),Messages.ProductsListed);
         }
 
         public Brand GetByBrandId(int brandId)
