@@ -2,8 +2,8 @@ Under development..
 
 # Rent a Car Project
 
-*The project was developed in C#, in accordance with the multi-layered architecture and SOLID principles.
-*CRUD operations were performed using the Entity Framework.
+* The project was developed in C#, in accordance with the multi-layered architecture and SOLID principles.
+* CRUD operations were performed using the Entity Framework.
 MSSQL Localdb was used for database in the project.
 This system includes authentication and authorization.
 Users can only perform transactions for which they are authorized.
