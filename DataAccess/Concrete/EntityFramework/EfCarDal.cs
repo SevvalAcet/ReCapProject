@@ -15,14 +15,14 @@ namespace DataAccess.Concrete.EntityFramework
             using (NorthwindContext context = new NorthwindContext())
             {
                 var result = from car in context.Cars //arabalarla marka ve renkleri birleştirdi
-                             join brand in context.Brands on car.BrandId equals brand.Id //on kullanarak kural veriyoruz
-                             join color in context.Colors on car.ColorId equals color.Id // car'daki colorId ile color'ın aId'si eşitse onları joinle
+                             join brand in context.Brands on car.BrandId equals brand.BrandId //on kullanarak kural veriyoruz
+                             join color in context.Colors on car.ColorId equals color.ColorId // car'daki colorId ile color'ın aId'si eşitse onları joinle
                              select new CarDetailDto
                              {
-                                 BrandName = brand.Name,
+                                 BrandName = brand.BrandName,
                                  CarName = car.Description,
-                                 ColorName = color.Name,
-                                 DailyPrice = car.DailyPrice
+                                 ColorName = color.ColorName,
+                                 DailyPrice = (int)car.DailyPrice
                              };
                 return result.ToList();
             }

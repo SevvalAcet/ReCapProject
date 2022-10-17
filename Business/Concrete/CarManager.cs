@@ -20,7 +20,7 @@ namespace Business.Concrete
         {
             if(car.Description.Length >=2 && car.DailyPrice>0)
             {
-                return new ErrorResult(Messages.CarNameInvalid);
+                return new ErrorResult(Messages.CarNotAdded);
             }
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
@@ -29,7 +29,7 @@ namespace Business.Concrete
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new Result(false);
+            return new SuccessResult();
         }
 
         public IDataResult<List<Car>> GetAll()

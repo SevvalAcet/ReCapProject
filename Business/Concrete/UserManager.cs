@@ -32,7 +32,8 @@ namespace Business.Concrete
 
         public IResult Update(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Update(user);
+            return new SuccessResult();  
         }
     }
 }

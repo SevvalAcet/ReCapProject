@@ -3,18 +3,19 @@
     public class Result : IResult
     {
 
-        public Result(bool success, string message):this(success)
+        public Result(bool ısSuccess, string message):this(ısSuccess)
         {
             Message = message;
         }
-        public Result(bool success)
+        public Result(bool ısSuccess)
         {
-            Success = success;
+            ısSuccess = ısSuccess;
         }
 
 
-        public bool Success { get; }
+        public bool IsSuccess { get; }
 
         public string Message { get; }
+
     }
 }

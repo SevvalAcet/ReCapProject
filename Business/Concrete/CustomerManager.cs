@@ -16,13 +16,13 @@ namespace Business.Concrete
         public IResult Add(Customer customer)
         {
             _customerDal.Add(customer);
-            return new Result(true);
+            return new SuccessResult();
         }
 
         public IResult Delete(Customer customer)
         {
             _customerDal.Delete(customer);
-            return new Result(false);
+            return new SuccessResult();
         }
 
         public IDataResult<List<Customer>> GetAll()
@@ -32,7 +32,8 @@ namespace Business.Concrete
 
         public IResult Update(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Update(customer);
+            return new SuccessResult();
         }
     }
 }

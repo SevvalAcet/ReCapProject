@@ -15,7 +15,7 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>();
             {
-                new Car { Id = 1, BrandId = 1, ColorId = 2, DailyPrice = 2000, Description = "2001 model bmw", ModelYear = 2001 };
+                new Car { CarId = 1, BrandId = 1, ColorId = 2, DailyPrice = 2000, Description = "2001 model bmw", ModelYear = 2001 };
             }
         }
         public List<Car> GetAll()
@@ -25,7 +25,7 @@ namespace DataAccess.Concrete.InMemory
 
         public List<Car> GetById(int Id)
         {
-            return _cars.Where(c => c.Id == Id).ToList();
+            return _cars.Where(c => c.CarId == Id).ToList();
         }
 
         public void Add(Car car)
@@ -35,14 +35,14 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Car car)
         {
-         Car carToDelete = _cars.SingleOrDefault(C => C.Id == car.Id);
+         Car carToDelete = _cars.SingleOrDefault(C => C.CarId == car.CarId);
 
          _cars.Remove(carToDelete);
          }
 
          public void Update(Car car)
          {
-            Car carToUpdate = _cars.SingleOrDefault(C => C.Id == car.Id);
+            Car carToUpdate = _cars.SingleOrDefault(C => C.CarId == car.CarId);
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.ModelYear = car.ModelYear;
