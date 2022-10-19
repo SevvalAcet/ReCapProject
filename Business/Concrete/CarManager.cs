@@ -4,7 +4,6 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
-using System.Collections.Generic;
 
 namespace Business.Concrete
 {
@@ -43,9 +42,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetCarDetails());
         }
 
-        public IDataResult<List<Car>> GetCarsBrandId(int brandId)
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c=>c.BrandId== brandId));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId));
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
@@ -53,6 +52,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>> (_carDal.GetAll(c => c.ColorId == colorId));
         }
 
-      
+        public IDataResult<List<CarDetailDto>> GetCarsDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResult Update(Car car)
+        {
+            _carDal.Update(car);
+            return new SuccessResult();
+        }
     }
 }
