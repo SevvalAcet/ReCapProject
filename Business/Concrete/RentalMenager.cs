@@ -32,7 +32,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
-        public IDataResult<Rental> GetByReantalId(int rentalId)
+        public IDataResult<Rental> GetByRentalId(int rentalId)
         {
             throw new NotImplementedException();
         }
